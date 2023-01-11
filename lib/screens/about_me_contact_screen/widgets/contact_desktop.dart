@@ -26,18 +26,12 @@ class _ContactDesktopState extends State<ContactDesktop> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Expanded(
-          child: Padding(
-            padding: EdgeInsets.all(50),
-            child: Icon(
-              Icons.drafts_outlined,
-              size: 100,
-              color: Colors.pink,
-            ),
-          ),
+        Container(
+          height: 520,
+          width: 480,
+          color: Colors.pink,
         ),
-        SizedBox(
-          width: MediaQuery.of(context).size.width - 480,
+        Expanded(
           child: Form(
             key: _formKey,
             child: Column(
@@ -65,6 +59,7 @@ class _ContactDesktopState extends State<ContactDesktop> {
                     ),
                   ],
                 ),
+                SizedBox(height: 30),
                 Row(
                   children: [
                     _Wrapper(
@@ -81,16 +76,23 @@ class _ContactDesktopState extends State<ContactDesktop> {
                     ),
                   ],
                 ),
+                SizedBox(height: 30),
                 Row(
                   children: [
                     _Wrapper(
                       label: "Wiadomość",
-                      child: TextFormField(
-                        decoration: _decoration,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: 50,
-                        minLines: 3,
-                        maxLength: 1000,
+                      child: SizedBox(
+                        height: 126,
+                        // child: SingleChildScrollView(
+                        child: TextFormField(
+                          scrollController: ScrollController(),
+                          decoration: _decoration,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: 50,
+                          minLines: 3,
+                          maxLength: 1000,
+                        ),
+                        // ),
                       ),
                     ),
                   ],
@@ -114,7 +116,7 @@ class _Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: const EdgeInsets.only(bottom: 30, left: 30, right: 30),
+        margin: const EdgeInsets.only(left: 30, right: 30),
         child: Column(
           children: [
             Row(

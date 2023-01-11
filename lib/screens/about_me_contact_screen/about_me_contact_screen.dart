@@ -27,7 +27,7 @@ class AboutMeContactScreen extends StatelessWidget {
             SizedBox(height: 80 + Provider.of<Scroll>(context).padding),
             const AboutMeHeader(),
             const AboutMeContent(),
-            Contact()
+            const Contact()
           ],
         ),
         const Navbar(),
