@@ -1,5 +1,7 @@
+import 'package:cv/providers/my_theme.dart';
 import 'package:cv/screens/home_screen/home_screen_desktop.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,7 +19,10 @@ class HomeScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Colors.blue, Colors.blue.shade100],
+            colors: [
+              Provider.of<MyTheme>(context).current.primary2,
+              Provider.of<MyTheme>(context).current.homeGradient2
+            ],
           ),
         ),
         child: ScreenTypeLayout(

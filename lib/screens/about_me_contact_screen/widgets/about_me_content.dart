@@ -1,4 +1,6 @@
+import 'package:cv/providers/my_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AboutMeContent extends StatelessWidget {
   const AboutMeContent({super.key});
@@ -6,7 +8,7 @@ class AboutMeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Provider.of<MyTheme>(context).current.background,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 60),
         child: Column(
@@ -27,6 +29,7 @@ class AboutMeContent extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
+                backgroundColor: Provider.of<MyTheme>(context).current.primary,
                 padding: const EdgeInsets.all(16),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
               ),
@@ -62,7 +65,10 @@ class _Item extends StatelessWidget {
               child: Text(
                 text,
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.blue, fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Provider.of<MyTheme>(context).current.onBackground,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ),

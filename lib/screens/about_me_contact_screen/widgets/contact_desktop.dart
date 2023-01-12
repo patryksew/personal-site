@@ -1,4 +1,6 @@
+import 'package:cv/providers/my_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ContactDesktop extends StatefulWidget {
   const ContactDesktop({super.key});
@@ -15,21 +17,21 @@ class _ContactDesktopState extends State<ContactDesktop> {
   String _message = '';
   _ContactType _contactType = _ContactType.email;
 
-  final InputDecoration _decoration = InputDecoration(
-    fillColor: Colors.white,
-    filled: true,
-    border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-  );
-
   @override
   Widget build(BuildContext context) {
+    final InputDecoration _decoration = InputDecoration(
+      fillColor: Provider.of<MyTheme>(context).current.background,
+      filled: true,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+    );
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           height: 520,
           width: 480,
-          color: Colors.pink,
+          color: Provider.of<MyTheme>(context).current.secondary2,
         ),
         Expanded(
           child: Form(
@@ -38,9 +40,12 @@ class _ContactDesktopState extends State<ContactDesktop> {
               children: [
                 Container(
                   margin: const EdgeInsets.all(30),
-                  child: const Text(
+                  child: Text(
                     "Bądźmy w kontakcie",
-                    style: TextStyle(color: Colors.pink, fontWeight: FontWeight.bold, fontSize: 48),
+                    style: TextStyle(
+                        color: Provider.of<MyTheme>(context).current.onPrimary,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 48),
                   ),
                 ),
                 Row(
@@ -59,7 +64,7 @@ class _ContactDesktopState extends State<ContactDesktop> {
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Row(
                   children: [
                     _Wrapper(
@@ -76,14 +81,13 @@ class _ContactDesktopState extends State<ContactDesktop> {
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Row(
                   children: [
                     _Wrapper(
                       label: "Wiadomość",
                       child: SizedBox(
                         height: 126,
-                        // child: SingleChildScrollView(
                         child: TextFormField(
                           scrollController: ScrollController(),
                           decoration: _decoration,
@@ -92,7 +96,6 @@ class _ContactDesktopState extends State<ContactDesktop> {
                           minLines: 3,
                           maxLength: 1000,
                         ),
-                        // ),
                       ),
                     ),
                   ],

@@ -1,4 +1,6 @@
+import 'package:cv/providers/my_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AboutMeHeader extends StatelessWidget {
   const AboutMeHeader({super.key});
@@ -6,11 +8,11 @@ class AboutMeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue,
+      color: Provider.of<MyTheme>(context).current.primary2,
       child: Row(
         children: [
           Container(
-            color: Colors.pink,
+            color: Provider.of<MyTheme>(context).current.secondary2,
             padding: const EdgeInsets.all(32.5),
             width: 480,
             height: 480,
@@ -19,10 +21,10 @@ class AboutMeHeader extends StatelessWidget {
           Expanded(
             child: Column(
               children: [
-                const Text(
+                Text(
                   "O mnie",
                   style: TextStyle(
-                    color: Colors.pink,
+                    color: Provider.of<MyTheme>(context).current.onPrimary,
                     fontWeight: FontWeight.bold,
                     fontSize: 48,
                   ),

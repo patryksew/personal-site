@@ -4,13 +4,10 @@ import 'package:flutter/material.dart';
 
 class Scroll extends ChangeNotifier {
   final ScrollController _controller = ScrollController();
-  late MediaQueryData _mediaQuery;
+  late final MediaQueryData _mediaQuery;
 
-  set mediaQuery(MediaQueryData val) {
-    _mediaQuery = val;
-  }
-
-  Scroll() {
+  Scroll(BuildContext context) {
+    _mediaQuery = MediaQuery.of(context);
     _controller.addListener(() {
       notifyListeners();
     });

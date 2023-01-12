@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cv/screens/about_me_contact_screen/widgets/about_me_content.dart';
 import 'package:cv/screens/about_me_contact_screen/widgets/about_me_header.dart';
 import 'package:cv/screens/about_me_contact_screen/widgets/contact.dart';
@@ -13,22 +15,22 @@ class AboutMeContactScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> containers = [];
-    for (int i = 0; i < 10; i++) {
-      containers.add(const TestContainer());
-    }
+    final double screenPadding = MediaQuery.of(context).size.width - 1700;
 
     return Stack(
       children: [
         Container(),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 80 + Provider.of<Scroll>(context).padding),
-            const AboutMeHeader(),
-            const AboutMeContent(),
-            const Contact()
-          ],
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: max(screenPadding, 0)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 80 + Provider.of<Scroll>(context).padding),
+              const AboutMeHeader(),
+              const AboutMeContent(),
+              const Contact()
+            ],
+          ),
         ),
         const Navbar(),
       ],

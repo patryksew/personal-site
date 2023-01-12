@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../providers/my_theme.dart';
 
 class HomeScreenNavItem extends StatelessWidget {
   final String text;
@@ -12,7 +15,8 @@ class HomeScreenNavItem extends StatelessWidget {
         onPressed: () {},
         child: Text(
           text,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 32, color: Colors.pink),
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 32, color: Provider.of<MyTheme>(context).current.secondary),
         ),
       ),
     );

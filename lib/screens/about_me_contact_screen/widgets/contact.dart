@@ -1,5 +1,7 @@
+import 'package:cv/providers/my_theme.dart';
 import 'package:cv/screens/about_me_contact_screen/widgets/contact_desktop.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class Contact extends StatelessWidget {
@@ -8,7 +10,7 @@ class Contact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue,
+      color: Provider.of<MyTheme>(context).current.primary2,
       child: ScreenTypeLayout(
         mobile: const ContactDesktop(),
       ),

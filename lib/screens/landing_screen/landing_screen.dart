@@ -12,18 +12,23 @@ class LandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<Scroll>(context, listen: false).mediaQuery = MediaQuery.of(context);
-
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: SingleChildScrollView(
-        controller: Provider.of<Scroll>(context, listen: false).controller,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            HomeScreen(),
-            AboutMeContactScreen(),
-          ],
+    return Builder(
+      builder: (context) => ChangeNotifierProvider(
+        create: (_) => Scroll(context),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Builder(
+            builder: (context) => SingleChildScrollView(
+              controller: Provider.of<Scroll>(context, listen: false).controller,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  HomeScreen(),
+                  AboutMeContactScreen(),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
