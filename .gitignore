@@ -22,3 +22,5 @@ doc/api/
 
 #
 .VSCodeCounter
+.flutter-plugins
+.flutter-plugins-dependencies
