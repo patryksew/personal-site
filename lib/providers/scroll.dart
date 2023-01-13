@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 
 class Scroll extends ChangeNotifier {
   final ScrollController _controller = ScrollController();
-  late final MediaQueryData _mediaQuery;
 
-  Scroll(BuildContext context) {
-    _mediaQuery = MediaQuery.of(context);
+  Scroll() {
     _controller.addListener(() {
       notifyListeners();
     });
@@ -16,18 +14,18 @@ class Scroll extends ChangeNotifier {
   ScrollController get controller => _controller;
   double get offset => _controller.offset;
 
-  double get position {
-    double val = offset - _mediaQuery.size.height + _mediaQuery.padding.bottom;
+  double position(MediaQueryData mediaQuery) {
+    double val = offset - mediaQuery.size.height + mediaQuery.padding.bottom;
     val = max(0, val);
     return val;
   }
 
-  double get _position {
-    return offset - _mediaQuery.size.height + _mediaQuery.padding.bottom;
+  double _position(MediaQueryData mediaQuery) {
+    return offset - mediaQuery.size.height + mediaQuery.padding.bottom;
   }
 
-  double get padding {
-    double val = min(_mediaQuery.padding.top, max(_position + _mediaQuery.padding.top, 0));
+  double padding(MediaQueryData mediaQuery) {
+    double val = min(mediaQuery.padding.top, max(_position(mediaQuery) + mediaQuery.padding.top, 0));
     return val;
   }
 }

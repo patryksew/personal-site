@@ -18,12 +18,14 @@ class Navbar extends StatelessWidget {
   Widget build(BuildContext context) {
     final double screenPadding = MediaQuery.of(context).size.width - 1700;
 
+    final mediaQuery = MediaQuery.of(context);
+
     return Positioned(
       width: MediaQuery.of(context).size.width,
-      top: Provider.of<Scroll>(context).position,
+      top: Provider.of<Scroll>(context).position(mediaQuery),
       child: Container(
-        padding: EdgeInsets.only(top: Provider.of<Scroll>(context).padding),
-        height: 80 + Provider.of<Scroll>(context).padding,
+        padding: EdgeInsets.only(top: Provider.of<Scroll>(context).padding(mediaQuery)),
+        height: 80 + Provider.of<Scroll>(context).padding(mediaQuery),
         decoration: BoxDecoration(
           color: Provider.of<MyTheme>(context).current.primary,
           boxShadow: const [BoxShadow(offset: Offset(0, 6), color: Colors.black26)],
