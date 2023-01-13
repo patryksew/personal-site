@@ -3,7 +3,6 @@ import 'package:cv/widgets/navbar/language_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../providers/my_theme.dart';
 import 'widgets/home_screen_icon_button.dart';
@@ -46,9 +45,8 @@ class HomeScreenDesktop extends StatelessWidget {
               const SizedBox(height: 50),
               Row(
                 children: const [
-                  HomeScreenNavItem('O mnie'),
-                  HomeScreenNavItem('Kontakt'),
-                  HomeScreenNavItem('Projekty'),
+                  HomeScreenNavItem('O mnie', targetId: "about_me"),
+                  HomeScreenNavItem('Kontakt', targetId: "contact"),
                 ],
               ),
               const SizedBox(height: 60),
@@ -70,7 +68,7 @@ class HomeScreenDesktop extends StatelessWidget {
                     Icons.language,
                     onPressed: () => showDialog(
                       context: context,
-                      builder: (_) => LanguageDialog(),
+                      builder: (_) => const LanguageDialog(),
                     ),
                   ),
                 ],

@@ -1,3 +1,4 @@
+import 'package:cv/helpers/scroll_to.dart';
 import 'package:flutter/material.dart';
 
 class NavrowLogo extends StatelessWidget {
@@ -8,15 +9,24 @@ class NavrowLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        margin: const EdgeInsets.only(left: 25),
-        child: const Text(
-          "Patryk\nSewastianowicz",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
+      child: TextButton(
+        onPressed: () {
+          scrollTo("home");
+        },
+        child: Row(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(left: 25),
+              child: const Text(
+                "Patryk\nSewastianowicz",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -22,7 +22,7 @@ class LandingScreen extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: const [
-                HomeScreen(),
+                HomeScreen(key: GlobalObjectKey("home")),
                 AboutMeContactScreen(),
               ],
             ),

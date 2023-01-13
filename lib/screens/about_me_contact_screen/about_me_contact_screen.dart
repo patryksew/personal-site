@@ -26,9 +26,9 @@ class AboutMeContactScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 80 + Provider.of<Scroll>(context).padding(MediaQuery.of(context))),
-              const AboutMeHeader(),
+              const AboutMeHeader(key: GlobalObjectKey("about_me")),
               const AboutMeContent(),
-              const Contact()
+              const Contact(key: GlobalObjectKey("contact"))
             ],
           ),
         ),

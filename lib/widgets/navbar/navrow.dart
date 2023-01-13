@@ -1,7 +1,5 @@
+import 'package:cv/helpers/scroll_to.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../providers/my_theme.dart';
 
 class Navrow extends StatelessWidget {
   const Navrow({super.key});
@@ -9,26 +7,31 @@ class Navrow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const TextStyle style = TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20);
-    TextStyle selectedStyle =
-        TextStyle(color: Provider.of<MyTheme>(context).current.secondary, fontWeight: FontWeight.bold, fontSize: 20);
+    // TextStyle selectedStyle =
+    //     TextStyle(color: Provider.of<MyTheme>(context).current.secondary, fontWeight: FontWeight.bold, fontSize: 20);
 
     return Expanded(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            "O mnie",
-            style: selectedStyle,
+          TextButton(
+            onPressed: () {
+              scrollTo("about_me");
+            },
+            child: const Text(
+              "O mnie",
+              style: style,
+            ),
           ),
           const SizedBox(width: 10),
-          const Text(
-            "Kontakt",
-            style: style,
-          ),
-          const SizedBox(width: 10),
-          const Text(
-            "Projekty",
-            style: style,
+          TextButton(
+            onPressed: () {
+              scrollTo("contact");
+            },
+            child: const Text(
+              "Kontakt",
+              style: style,
+            ),
           ),
         ],
       ),

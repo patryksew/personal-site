@@ -1,3 +1,4 @@
+import 'package:cv/helpers/scroll_to.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -5,14 +6,17 @@ import '../../../providers/my_theme.dart';
 
 class HomeScreenNavItem extends StatelessWidget {
   final String text;
-  const HomeScreenNavItem(this.text, {super.key});
+  final String targetId;
+  const HomeScreenNavItem(this.text, {required this.targetId, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(right: 30),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          scrollTo(targetId);
+        },
         child: Text(
           text,
           style: TextStyle(
