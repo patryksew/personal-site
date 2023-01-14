@@ -30,14 +30,44 @@ class _ContactDesktopState extends State<ContactDesktop> {
     ),
   ];
 
+  void submit() {
+    if (_formKey.currentState == null) return;
+    FormState formState = _formKey.currentState!;
+    if (!formState.validate()) return;
+    formState.save();
+    print("$_name\n$_email\n$_phone\n$_contactType\n$_message");
+  }
+
+  String? notEmptyValidator(String? value) {
+    if (value == null || value.isEmpty) return "To pole nie może być puste";
+    return null;
+  }
+
+  String? phoneValidator(String? value) {
+    if (_contactType == ContactType.email && (value == null || value.isEmpty)) return null;
+    if (value == null || value.isEmpty) return "To pole nie może być puste";
+    if (value.length < 9) return "Nr telefonu jest zbyt krótki";
+    return null;
+  }
+
+  String? emailValidator(String? value) {
+    if (value == null || value.isEmpty) return "To pole nie może być puste";
+    if (!value.contains("@") || !value.contains(".")) return "Wprowadź poprawny adres email";
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<MyTheme>(context).current;
+    TextStyle textStyle = TextStyle(color: Provider.of<MyTheme>(context).current.onPrimary2);
 
     final InputDecoration decoration = InputDecoration(
       fillColor: theme.background,
       filled: true,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+      helperText: "",
+      errorStyle: const TextStyle(fontWeight: FontWeight.bold),
+      errorBorder: const OutlineInputBorder(borderSide: BorderSide(width: 2, color: Colors.red)),
     );
 
     return Row(
@@ -58,16 +88,20 @@ class _ContactDesktopState extends State<ContactDesktop> {
                 Row(
                   children: [
                     _Wrapper(
-                      label: "Imię",
+                      label: "Imię *",
                       child: TextFormField(
+                        style: textStyle,
+                        validator: notEmptyValidator,
                         onSaved: (newValue) => _name = newValue!,
                         textInputAction: TextInputAction.next,
                         decoration: decoration,
                       ),
                     ),
                     _Wrapper(
-                      label: "Email",
+                      label: "Email *",
                       child: TextFormField(
+                        style: textStyle,
+                        validator: emailValidator,
                         onSaved: (newValue) => _email = newValue!,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.emailAddress,
@@ -76,12 +110,15 @@ class _ContactDesktopState extends State<ContactDesktop> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 10),
                 Row(
                   children: [
                     _Wrapper(
-                      label: "Numer telefonu",
+                      // ignore: prefer_interpolation_to_compose_strings
+                      label: ("Numer telefonu" + (_contactType == ContactType.phone ? " *" : "")),
                       child: TextFormField(
+                        style: textStyle,
+                        validator: phoneValidator,
                         onSaved: (newValue) => _phone = newValue!,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.phone,
@@ -92,28 +129,35 @@ class _ContactDesktopState extends State<ContactDesktop> {
                     _Wrapper(
                       label: "Preferowany typ kontaktu",
                       child: SizedBox(
-                        height: 61,
+                        height: 84,
                         child: DropdownButtonFormField(
+                          style: textStyle,
+                          dropdownColor: theme.background,
+                          value: ContactType.email,
                           icon: const Padding(
                             padding: EdgeInsets.only(right: 8),
                             child: FaIcon(FontAwesomeIcons.caretDown, size: 21),
                           ),
                           decoration: decoration,
-                          onChanged: (value) => _contactType = value as ContactType,
+                          onChanged: (value) => setState(() {
+                            _contactType = value as ContactType;
+                          }),
                           items: dropdownItems,
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 10),
                 Row(
                   children: [
                     _Wrapper(
-                      label: "Wiadomość",
+                      label: "Wiadomość *",
                       child: SizedBox(
                         height: 126,
                         child: TextFormField(
+                          style: textStyle,
+                          validator: notEmptyValidator,
                           onSaved: (newValue) => _message = newValue!,
                           scrollController: ScrollController(),
                           decoration: decoration,
@@ -127,7 +171,9 @@ class _ContactDesktopState extends State<ContactDesktop> {
                   ],
                 ),
                 ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    submit();
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: theme.secondary2,
                     padding: const EdgeInsets.all(16),
