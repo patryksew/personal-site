@@ -1,8 +1,14 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:cv/providers/my_theme.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../../../widgets/dialogs/message_sent_dialog.dart';
+import '../../../widgets/dialogs/my_alert_dialog.dart';
 
 class ContactDesktop extends StatefulWidget {
   const ContactDesktop({super.key});
@@ -30,12 +36,51 @@ class _ContactDesktopState extends State<ContactDesktop> {
     ),
   ];
 
-  void submit() {
+  void submit(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+
     if (_formKey.currentState == null) return;
     FormState formState = _formKey.currentState!;
     if (!formState.validate()) return;
     formState.save();
-    print("$_name\n$_email\n$_phone\n$_contactType\n$_message");
+
+    bool isConnected = !(await Connectivity().checkConnectivity() == ConnectivityResult.none);
+
+    if (!isConnected) {
+      showDialog(
+          context: context,
+          builder: (context) => const MyAlertDialog(
+                title: "Urządzenie nie ma połączenia z internetem",
+                content: "Wiadomośc zostanie wysłana, gdy urządzenie połączy się z internetem",
+              ));
+    }
+
+    if (FirebaseAuth.instance.currentUser == null) {
+      try {
+        await FirebaseAuth.instance.signInAnonymously();
+        await FirebaseFirestore.instance.collection("mail").doc(FirebaseAuth.instance.currentUser!.uid).set({});
+      } catch (error) {
+        showDialog(
+            context: context,
+            builder: ((context) => const MyAlertDialog(
+                title: "Coś poszło nie tak",
+                content: "Spróbuj ponownie później lub napisz na patryk.sewastianowicz@gmail.com")));
+        return;
+      }
+    }
+    await FirebaseFirestore.instance
+        .collection("mail/${FirebaseAuth.instance.currentUser!.uid}/messages")
+        .add({"name": _name, "email": _email, "phone": _phone, "contact_type": _contactType.name, "message": _message});
+
+    await showDialog(context: context, builder: (context) => MessageSentDialog(message: _message));
+
+    _name = '';
+    _email = '';
+    _phone = '';
+    _message = '';
+    _contactType = ContactType.email;
+
+    formState.reset();
   }
 
   String? notEmptyValidator(String? value) {
@@ -172,7 +217,7 @@ class _ContactDesktopState extends State<ContactDesktop> {
                 ),
                 ElevatedButton.icon(
                   onPressed: () {
-                    submit();
+                    submit(context);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: theme.secondary2,
