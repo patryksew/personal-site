@@ -15,6 +15,7 @@ class LandingScreen extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => Scroll(),
       child: Scaffold(
+        drawer: Drawer(),
         backgroundColor: Colors.transparent,
         body: Builder(
           builder: (context) => SingleChildScrollView(

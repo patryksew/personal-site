@@ -6,11 +6,7 @@ class HomeScreenImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var marginFactor = (MediaQuery.of(context).size.height - size) / 3;
-    if (marginFactor < 0) marginFactor = 0;
-
     return Container(
-      margin: EdgeInsets.only(bottom: marginFactor * 2, top: marginFactor),
       width: size,
       height: size,
       decoration: const BoxDecoration(

@@ -14,12 +14,21 @@ class HomeScreenDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // var marginFactor = (MediaQuery.of(context).size.height - size) / 3;
+    // if (marginFactor < 0) marginFactor = 0;
+
     return Padding(
       padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const HomeScreenImage(355),
+          Column(
+            children: const [
+              Spacer(flex: 1),
+              HomeScreenImage(355),
+              Spacer(flex: 2),
+            ],
+          ),
           const SizedBox(width: 50),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
