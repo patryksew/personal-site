@@ -13,13 +13,23 @@ class HomeScreenIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyThemeData myTheme = Provider.of<MyTheme>(context).current;
+
     return Container(
       margin: const EdgeInsets.only(right: 13),
       child: TextButton.icon(
         onPressed: onPressed ?? () {},
-        label: text != null ? Text(text!) : Container(),
-        icon: Icon(iconData,
-            size: 40, color: forceWhite ? Colors.white : Provider.of<MyTheme>(context).current.onPrimary2),
+        label: text != null
+            ? Text(
+                text!,
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: myTheme.onPrimary2,
+                ),
+              )
+            : Container(),
+        icon: Icon(iconData, size: 40, color: forceWhite ? Colors.white : myTheme.onPrimary2),
       ),
     );
   }

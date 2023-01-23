@@ -16,6 +16,7 @@ class HomeScreenNavItem extends StatelessWidget {
       child: TextButton(
         onPressed: () {
           scrollTo(targetId);
+          Scaffold.of(context).closeDrawer();
         },
         child: Text(
           text,

@@ -14,9 +14,6 @@ class HomeScreenDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var marginFactor = (MediaQuery.of(context).size.height - size) / 3;
-    // if (marginFactor < 0) marginFactor = 0;
-
     return Padding(
       padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       child: Row(

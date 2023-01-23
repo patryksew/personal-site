@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 
 import '../../providers/scroll.dart';
 import '../../widgets/navbar/navbar.dart';
+import '../../widgets/navbar/navbar_desktop.dart';
 
 class AboutMeContactScreen extends StatelessWidget {
   const AboutMeContactScreen({super.key});

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:cv/screens/about_me_contact_screen/about_me_contact_screen.dart';
 import 'package:cv/screens/home_screen/home_screen.dart';
+import 'package:cv/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,7 @@ class LandingScreen extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => Scroll(),
       child: Scaffold(
-        drawer: Drawer(),
+        drawer: const MyDrawer(),
         backgroundColor: Colors.transparent,
         body: Builder(
           builder: (context) => SingleChildScrollView(

@@ -1,23 +1,17 @@
-import 'dart:math';
-
-import 'package:cv/providers/my_theme.dart';
-import 'package:cv/widgets/navbar/navrow.dart';
-import 'package:cv/widgets/navbar/navrow_icons.dart';
+import 'package:cv/widgets/navbar/navbar_desktop.dart';
+import 'package:cv/widgets/navbar/navbar_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
+import '../../providers/my_theme.dart';
 import '../../providers/scroll.dart';
-import 'navrow_logo.dart';
 
 class Navbar extends StatelessWidget {
-  const Navbar({
-    Key? key,
-  }) : super(key: key);
+  const Navbar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final double screenPadding = MediaQuery.of(context).size.width - 1700;
-
     final mediaQuery = MediaQuery.of(context);
 
     return Positioned(
@@ -30,16 +24,10 @@ class Navbar extends StatelessWidget {
           color: Provider.of<MyTheme>(context).current.primary,
           boxShadow: const [BoxShadow(offset: Offset(0, 6), color: Colors.black26)],
         ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: max(screenPadding, 0)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              NavrowLogo(),
-              Navrow(),
-              NavrowIcons(),
-            ],
-          ),
+        child: ScreenTypeLayout(
+          mobile: const NavbarMobile(),
+          tablet: const NavbarDesktop(),
+          desktop: const NavbarDesktop(),
         ),
       ),
     );

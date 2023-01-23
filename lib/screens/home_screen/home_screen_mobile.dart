@@ -3,39 +3,50 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/my_theme.dart';
+import '../../widgets/icon_open_drawer.dart';
 
 class HomeScreenMobile extends StatelessWidget {
   const HomeScreenMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(height: MediaQuery.of(context).padding.top),
-          const Spacer(),
-          const HomeScreenImage(200),
-          SelectableText(
-            "Cześć, jestem Patryk",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Provider.of<MyTheme>(context).current.onPrimary2,
-              fontWeight: FontWeight.bold,
-              fontSize: 40,
+    MyThemeData myTheme = Provider.of<MyTheme>(context).current;
+
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: const [
+                IconOpenDrawer(),
+              ],
             ),
-          ),
-          SelectableText(
-            'Front-end developer.\nMobile developer.',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Provider.of<MyTheme>(context).current.onPrimary2,
-              fontSize: 32,
+            const Spacer(),
+            const HomeScreenImage(200),
+            const SizedBox(height: 70),
+            SelectableText(
+              "Cześć, jestem Patryk",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: myTheme.onPrimary2,
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
             ),
-          ),
-          const Spacer(flex: 2),
-        ],
+            const SizedBox(height: 40),
+            SelectableText(
+              'Front-end developer.\nMobile developer.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: myTheme.onPrimary2,
+                fontSize: 32,
+              ),
+            ),
+            const Spacer(flex: 4),
+          ],
+        ),
       ),
     );
   }
