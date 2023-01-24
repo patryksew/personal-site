@@ -18,7 +18,7 @@ class HomeScreenNavItem extends StatelessWidget {
           scrollTo(targetId);
           Scaffold.of(context).closeDrawer();
         },
-        child: Text(
+        child: SelectableText(
           text,
           style: TextStyle(
               fontWeight: FontWeight.bold, fontSize: 32, color: Provider.of<MyTheme>(context).current.secondary),

@@ -17,11 +17,11 @@ class MyAlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Provider.of<MyTheme>(context).current.background,
-      title: Text(
+      title: SelectableText(
         title,
         style: TextStyle(color: Provider.of<MyTheme>(context).current.onPrimary2),
       ),
-      content: Text(
+      content: SelectableText(
         content,
         style: TextStyle(color: Provider.of<MyTheme>(context).current.onPrimary2),
       ),

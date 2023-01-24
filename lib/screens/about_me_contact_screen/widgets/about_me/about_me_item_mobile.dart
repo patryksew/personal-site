@@ -22,7 +22,7 @@ class AboutMeItemMobile extends StatelessWidget {
           const SizedBox(height: 40),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
+            child: SelectableText(
               text,
               textAlign: TextAlign.center,
               style: TextStyle(

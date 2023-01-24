@@ -33,7 +33,7 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
         children: [
           Container(
             margin: const EdgeInsets.all(30),
-            child: Text(
+            child: SelectableText(
               "Bądźmy w kontakcie",
               style: TextStyle(color: theme.onPrimary, fontWeight: FontWeight.bold, fontSize: 48),
               textAlign: TextAlign.center,
@@ -45,7 +45,7 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
-                Text(
+                SelectableText(
                   "Wolisz bezpośredni kontakt?",
                   style: TextStyle(
                     color: theme.onPrimary2,
@@ -63,7 +63,7 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
                       color: theme.onPrimary2,
                     ),
                     const SizedBox(width: 20),
-                    Text(
+                    SelectableText(
                       "508 394 295",
                       style: TextStyle(color: theme.onPrimary2, fontSize: 20, fontWeight: FontWeight.bold),
                     ),

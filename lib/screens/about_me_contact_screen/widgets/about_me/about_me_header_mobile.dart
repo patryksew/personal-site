@@ -35,7 +35,7 @@ class AboutMeHeaderMobile extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
-            child: const Text(
+            child: const SelectableText(
               "Nazywam się Patryk Sewastianowicz, jestem programistą front-end i mobile z rocznym doświadczeniem w branży. Posiadam umiejętności w takich technologiach jak HTML Flutter, JavaScript, Angular oraz Vue.",
               style: TextStyle(
                 fontWeight: FontWeight.bold,

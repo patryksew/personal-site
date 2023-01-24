@@ -16,11 +16,11 @@ class MessageSentDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Provider.of<MyTheme>(context).current.background,
-      title: Text(
+      title: SelectableText(
         "Wiadomość wysłana",
         style: TextStyle(color: Provider.of<MyTheme>(context).current.onPrimary2),
       ),
-      content: Text(
+      content: SelectableText(
         "Treść wiadomości:\n$_message",
         style: TextStyle(color: Provider.of<MyTheme>(context).current.onPrimary2),
       ),

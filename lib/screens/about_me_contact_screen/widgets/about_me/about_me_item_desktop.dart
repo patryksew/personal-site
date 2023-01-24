@@ -19,7 +19,7 @@ class AboutMeItemDesktop extends StatelessWidget {
           Expanded(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 60),
-              child: Text(
+              child: SelectableText(
                 text,
                 textAlign: TextAlign.center,
                 style: TextStyle(
