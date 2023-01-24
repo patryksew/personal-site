@@ -3,13 +3,11 @@ import 'dart:math';
 import 'package:cv/screens/about_me_contact_screen/widgets/about_me/about_me_content.dart';
 import 'package:cv/screens/about_me_contact_screen/widgets/about_me/about_me_header.dart';
 import 'package:cv/screens/about_me_contact_screen/widgets/contact.dart';
-import 'package:cv/screens/landing_screen/landing_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/scroll.dart';
 import '../../widgets/navbar/navbar.dart';
-import '../../widgets/navbar/navbar_desktop.dart';
 
 class AboutMeContactScreen extends StatelessWidget {
   const AboutMeContactScreen({super.key});

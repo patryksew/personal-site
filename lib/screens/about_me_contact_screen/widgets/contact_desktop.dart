@@ -1,14 +1,9 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:cv/providers/my_theme.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cv/screens/about_me_contact_screen/widgets/contact_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../../../widgets/dialogs/message_sent_dialog.dart';
-import '../../../widgets/dialogs/my_alert_dialog.dart';
 
 class ContactDesktop extends StatefulWidget {
   const ContactDesktop({super.key});
@@ -17,90 +12,7 @@ class ContactDesktop extends StatefulWidget {
   State<ContactDesktop> createState() => _ContactDesktopState();
 }
 
-class _ContactDesktopState extends State<ContactDesktop> {
-  final _formKey = GlobalKey<FormState>();
-  String _name = '';
-  String _email = '';
-  String? _phone = '';
-  String _message = '';
-  ContactType _contactType = ContactType.email;
-
-  final List<DropdownMenuItem> dropdownItems = [
-    const DropdownMenuItem(
-      value: ContactType.email,
-      child: Text("Email"),
-    ),
-    const DropdownMenuItem(
-      value: ContactType.phone,
-      child: Text("Telefon"),
-    ),
-  ];
-
-  void submit(BuildContext context) async {
-    await FirebaseAuth.instance.signOut();
-
-    if (_formKey.currentState == null) return;
-    FormState formState = _formKey.currentState!;
-    if (!formState.validate()) return;
-    formState.save();
-
-    bool isConnected = !(await Connectivity().checkConnectivity() == ConnectivityResult.none);
-
-    if (!isConnected) {
-      showDialog(
-          context: context,
-          builder: (context) => const MyAlertDialog(
-                title: "Urządzenie nie ma połączenia z internetem",
-                content: "Wiadomośc zostanie wysłana, gdy urządzenie połączy się z internetem",
-              ));
-    }
-
-    if (FirebaseAuth.instance.currentUser == null) {
-      try {
-        await FirebaseAuth.instance.signInAnonymously();
-        await FirebaseFirestore.instance.collection("mail").doc(FirebaseAuth.instance.currentUser!.uid).set({});
-      } catch (error) {
-        showDialog(
-            context: context,
-            builder: ((context) => const MyAlertDialog(
-                title: "Coś poszło nie tak",
-                content: "Spróbuj ponownie później lub napisz na patryk.sewastianowicz@gmail.com")));
-        return;
-      }
-    }
-    await FirebaseFirestore.instance
-        .collection("mail/${FirebaseAuth.instance.currentUser!.uid}/messages")
-        .add({"name": _name, "email": _email, "phone": _phone, "contact_type": _contactType.name, "message": _message});
-
-    await showDialog(context: context, builder: (context) => MessageSentDialog(message: _message));
-
-    _name = '';
-    _email = '';
-    _phone = '';
-    _message = '';
-    _contactType = ContactType.email;
-
-    formState.reset();
-  }
-
-  String? notEmptyValidator(String? value) {
-    if (value == null || value.isEmpty) return "To pole nie może być puste";
-    return null;
-  }
-
-  String? phoneValidator(String? value) {
-    if (_contactType == ContactType.email && (value == null || value.isEmpty)) return null;
-    if (value == null || value.isEmpty) return "To pole nie może być puste";
-    if (value.length < 9) return "Nr telefonu jest zbyt krótki";
-    return null;
-  }
-
-  String? emailValidator(String? value) {
-    if (value == null || value.isEmpty) return "To pole nie może być puste";
-    if (!value.contains("@") || !value.contains(".")) return "Wprowadź poprawny adres email";
-    return null;
-  }
-
+class _ContactDesktopState extends State<ContactDesktop> with ContactLogic {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<MyTheme>(context).current;
@@ -120,7 +32,7 @@ class _ContactDesktopState extends State<ContactDesktop> {
       children: [
         Expanded(
           child: Form(
-            key: _formKey,
+            key: ContactLogic.formKey,
             child: Column(
               children: [
                 Container(
@@ -137,7 +49,7 @@ class _ContactDesktopState extends State<ContactDesktop> {
                       child: TextFormField(
                         style: textStyle,
                         validator: notEmptyValidator,
-                        onSaved: (newValue) => _name = newValue!,
+                        onSaved: (newValue) => name = newValue!,
                         textInputAction: TextInputAction.next,
                         decoration: decoration,
                       ),
@@ -147,7 +59,7 @@ class _ContactDesktopState extends State<ContactDesktop> {
                       child: TextFormField(
                         style: textStyle,
                         validator: emailValidator,
-                        onSaved: (newValue) => _email = newValue!,
+                        onSaved: (newValue) => email = newValue!,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.emailAddress,
                         decoration: decoration,
@@ -160,11 +72,11 @@ class _ContactDesktopState extends State<ContactDesktop> {
                   children: [
                     _Wrapper(
                       // ignore: prefer_interpolation_to_compose_strings
-                      label: ("Numer telefonu" + (_contactType == ContactType.phone ? " *" : "")),
+                      label: ("Numer telefonu" + (contactType == ContactType.phone ? " *" : "")),
                       child: TextFormField(
                         style: textStyle,
                         validator: phoneValidator,
-                        onSaved: (newValue) => _phone = newValue!,
+                        onSaved: (newValue) => phone = newValue!,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.phone,
                         inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(9)],
@@ -185,7 +97,7 @@ class _ContactDesktopState extends State<ContactDesktop> {
                           ),
                           decoration: decoration,
                           onChanged: (value) => setState(() {
-                            _contactType = value as ContactType;
+                            contactType = value as ContactType;
                           }),
                           items: dropdownItems,
                         ),
@@ -203,7 +115,7 @@ class _ContactDesktopState extends State<ContactDesktop> {
                         child: TextFormField(
                           style: textStyle,
                           validator: notEmptyValidator,
-                          onSaved: (newValue) => _message = newValue!,
+                          onSaved: (newValue) => message = newValue!,
                           scrollController: ScrollController(),
                           decoration: decoration,
                           keyboardType: TextInputType.multiline,
@@ -296,7 +208,7 @@ class _Wrapper extends StatelessWidget {
   final Widget child;
   final String label;
 
-  const _Wrapper({super.key, required this.child, required this.label});
+  const _Wrapper({required this.child, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -323,5 +235,3 @@ class _Wrapper extends StatelessWidget {
     );
   }
 }
-
-enum ContactType { email, phone }

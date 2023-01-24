@@ -39,7 +39,8 @@ class AboutMeContent extends StatelessWidget {
               "Pobierz CV",
               style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
             ),
-          )
+          ),
+          const SizedBox(height: 60),
         ],
       ),
     );

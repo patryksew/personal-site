@@ -20,14 +20,12 @@ class LanguageDialog extends StatelessWidget {
         _Option(
           text: "🇵🇱  Polski",
           onPressed: () {
-            print("Wybrano polski");
             Navigator.of(context).pop();
           },
         ),
         _Option(
           text: "🇬🇧  Angielski",
           onPressed: () {
-            print("Wybrano angielski");
             Navigator.of(context).pop();
           },
         )
@@ -40,7 +38,7 @@ class _Option extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
 
-  const _Option({super.key, required this.text, required this.onPressed});
+  const _Option({required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

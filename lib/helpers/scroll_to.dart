@@ -4,8 +4,6 @@ import 'package:provider/provider.dart';
 import '../providers/scroll.dart';
 
 void scrollTo(String id) {
-  print(id);
-
   BuildContext? targetContext = GlobalObjectKey(id).currentContext;
   if (targetContext == null) return;
 

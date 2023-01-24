@@ -41,7 +41,6 @@ class MyTheme extends ChangeNotifier {
       isDarkMode = true;
       current = darkTheme;
     }
-    print("Dark mode is: $isDarkMode");
 
     notifyListeners();
   }
