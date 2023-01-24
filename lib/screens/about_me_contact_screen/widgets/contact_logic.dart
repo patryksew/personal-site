@@ -26,8 +26,6 @@ mixin ContactLogic {
   ];
 
   void submit(BuildContext context) async {
-    await FirebaseAuth.instance.signOut();
-
     if (formKey.currentState == null) return;
     FormState formState = formKey.currentState!;
     if (!formState.validate()) return;
