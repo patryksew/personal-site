@@ -12,7 +12,7 @@ class AboutMeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
-      mobile: AboutMeItemMobile(text: text),
+      mobile: AboutMeItemMobile(text: text, image: "envelope_plane"),
       tablet: AboutMeItemDesktop(text: text, imageRight: imageRight),
       desktop: AboutMeItemDesktop(text: text, imageRight: imageRight),
     );
