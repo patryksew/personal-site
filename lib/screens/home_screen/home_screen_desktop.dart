@@ -1,5 +1,4 @@
 import 'package:cv/helpers/open_site.dart';
-import 'package:cv/widgets/navbar/language_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -70,13 +69,13 @@ class HomeScreenDesktop extends StatelessWidget {
                     Provider.of<MyTheme>(context).isDarkMode ? Icons.dark_mode : Icons.dark_mode_outlined,
                     onPressed: Provider.of<MyTheme>(context, listen: false).toogleDarkMode,
                   ),
-                  HomeScreenIconButton(
-                    Icons.language,
-                    onPressed: () => showDialog(
-                      context: context,
-                      builder: (_) => const LanguageDialog(),
-                    ),
-                  ),
+                  // HomeScreenIconButton(
+                  //   Icons.language,
+                  //   onPressed: () => showDialog(
+                  //     context: context,
+                  //     builder: (_) => const LanguageDialog(),
+                  //   ),
+                  // ),
                 ],
               ),
             ],

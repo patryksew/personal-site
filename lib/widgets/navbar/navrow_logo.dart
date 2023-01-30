@@ -8,22 +8,24 @@ class NavrowLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 2,
-      child: TextButton(
-        onPressed: () {
-          scrollTo("home");
-        },
-        child: Text(
-          "Patryk\nSewastianowicz",
-          textAlign: textAlign,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
+    return Row(
+      children: [
+        const SizedBox(width: 25),
+        TextButton(
+          onPressed: () {
+            scrollTo("home");
+          },
+          child: Text(
+            "Patryk\nSewastianowicz",
+            textAlign: textAlign,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

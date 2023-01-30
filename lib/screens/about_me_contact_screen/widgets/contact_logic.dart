@@ -6,13 +6,15 @@ import 'package:flutter/material.dart';
 import '../../../widgets/dialogs/message_sent_dialog.dart';
 import '../../../widgets/dialogs/my_alert_dialog.dart';
 
-mixin ContactLogic {
+mixin ContactLogic<T extends StatefulWidget> on State<T> {
   static final formKey = GlobalKey<FormState>();
   String name = '';
   String email = '';
   String? phone = '';
   String message = '';
   ContactType contactType = ContactType.email;
+
+  bool isLoading = false;
 
   final List<DropdownMenuItem> dropdownItems = [
     const DropdownMenuItem(
@@ -26,6 +28,9 @@ mixin ContactLogic {
   ];
 
   void submit(BuildContext context) async {
+    setState(() {
+      isLoading = true;
+    });
     if (formKey.currentState == null) return;
     FormState formState = formKey.currentState!;
     if (!formState.validate()) return;
@@ -61,13 +66,17 @@ mixin ContactLogic {
 
     await showDialog(context: context, builder: (context) => MessageSentDialog(message: message));
 
-    name = '';
-    email = '';
-    phone = '';
-    message = '';
-    contactType = ContactType.email;
+    setState(() {
+      isLoading = false;
 
-    formState.reset();
+      name = '';
+      email = '';
+      phone = '';
+      message = '';
+      contactType = ContactType.email;
+
+      formState.reset();
+    });
   }
 
   String? notEmptyValidator(String? value) {

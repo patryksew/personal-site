@@ -23,6 +23,7 @@ class _ContactDesktopState extends State<ContactDesktop> with ContactLogic {
       filled: true,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
       helperText: "",
+      counterStyle: textStyle,
       errorStyle: const TextStyle(fontWeight: FontWeight.bold),
       errorBorder: const OutlineInputBorder(borderSide: BorderSide(width: 2, color: Colors.red)),
     );
@@ -128,9 +129,11 @@ class _ContactDesktopState extends State<ContactDesktop> with ContactLogic {
                   ],
                 ),
                 ElevatedButton.icon(
-                  onPressed: () {
-                    submit(context);
-                  },
+                  onPressed: isLoading
+                      ? null
+                      : () {
+                          submit(context);
+                        },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: theme.secondary2,
                     padding: const EdgeInsets.all(16),

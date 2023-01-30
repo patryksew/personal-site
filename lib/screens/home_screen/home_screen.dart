@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cv/providers/my_theme.dart';
 import 'package:cv/screens/home_screen/home_screen_desktop.dart';
 import 'package:cv/screens/home_screen/home_screen_mobile.dart';
@@ -15,6 +17,7 @@ class HomeScreen extends StatelessWidget {
     var height = mediaQuery.size.height;
     var padding = mediaQuery.padding;
     height -= padding.bottom;
+    height = max(height, 530);
     return SizedBox(
       height: height,
       width: mediaQuery.size.width,

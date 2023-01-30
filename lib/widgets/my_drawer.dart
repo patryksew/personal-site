@@ -8,7 +8,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/my_theme.dart';
-import 'navbar/language_dialog.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -58,14 +57,14 @@ class MyDrawer extends StatelessWidget {
                     text: "Tryb ciemny",
                     onPressed: Provider.of<MyTheme>(context, listen: false).toogleDarkMode,
                   ),
-                  HomeScreenIconButton(
-                    Icons.language,
-                    text: "Język",
-                    onPressed: () => showDialog(
-                      context: context,
-                      builder: (_) => const LanguageDialog(),
-                    ),
-                  ),
+                  // HomeScreenIconButton(
+                  //   Icons.language,
+                  //   text: "Język",
+                  //   onPressed: () => showDialog(
+                  //     context: context,
+                  //     builder: (_) => const LanguageDialog(),
+                  //   ),
+                  // ),
                 ],
               ),
             ),

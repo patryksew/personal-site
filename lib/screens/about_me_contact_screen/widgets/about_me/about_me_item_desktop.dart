@@ -5,12 +5,18 @@ import '../../../../providers/my_theme.dart';
 
 class AboutMeItemDesktop extends StatelessWidget {
   final String text;
+  final String image;
   final bool imageRight;
 
-  const AboutMeItemDesktop({super.key, required this.text, this.imageRight = true});
+  const AboutMeItemDesktop({super.key, required this.text, this.imageRight = true, required this.image});
 
   @override
   Widget build(BuildContext context) {
+    String image = "assets/${this.image}";
+    bool isDarkMode = Provider.of<MyTheme>(context).isDarkMode;
+    if (isDarkMode) image += "_white";
+    image += ".png";
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 60, horizontal: 60),
       child: Row(
@@ -31,9 +37,8 @@ class AboutMeItemDesktop extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 60),
-            color: Colors.red,
-            width: 200,
-            height: 200,
+            width: 300,
+            child: Image.asset(image, gaplessPlayback: true),
           ),
         ],
       ),

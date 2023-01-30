@@ -22,7 +22,7 @@ class AboutMeItemMobile extends StatelessWidget {
         children: [
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: Image.asset(image),
+            child: Image.asset(image, gaplessPlayback: true),
           ),
           const SizedBox(height: 40),
           Container(

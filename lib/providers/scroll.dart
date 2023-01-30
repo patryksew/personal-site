@@ -15,7 +15,8 @@ class Scroll extends ChangeNotifier {
   double get offset => _controller.offset;
 
   double position(MediaQueryData mediaQuery) {
-    double val = offset - mediaQuery.size.height + mediaQuery.padding.bottom;
+    double homeScreenHeight = max(mediaQuery.size.height, 530);
+    double val = offset - homeScreenHeight + mediaQuery.padding.bottom;
     val = max(0, val);
     return val;
   }

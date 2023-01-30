@@ -20,10 +20,9 @@ class NavbarDesktop extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: const [
-          SizedBox(width: 25),
-          NavrowLogo(),
-          Navrow(),
-          NavrowIcons(),
+          Expanded(child: NavrowLogo()),
+          Expanded(child: Navrow()),
+          Expanded(child: NavrowIcons()),
         ],
       ),
     );

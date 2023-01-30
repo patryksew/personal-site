@@ -10,14 +10,14 @@ void scrollTo(String id) {
   Scroll scrollProvider = Provider.of<Scroll>(targetContext, listen: false);
   ScrollController controller = scrollProvider.controller;
 
-  if (id == "about_me") {
-    controller.animateTo(MediaQuery.of(targetContext).size.height,
-        duration: const Duration(milliseconds: 500), curve: Curves.ease);
-    return;
-  }
-  if (id == "home") {
-    controller.animateTo(1, duration: const Duration(milliseconds: 500), curve: Curves.ease);
-    return;
-  }
-  Scrollable.ensureVisible(targetContext, duration: const Duration(milliseconds: 500));
+  // if (id == "about_me") {
+  //   controller.animateTo(MediaQuery.of(targetContext).size.height,
+  //       duration: const Duration(milliseconds: 500), curve: Curves.ease);
+  //   return;
+  // }
+  // if (id == "home") {
+  //   controller.animateTo(1, duration: const Duration(milliseconds: 500), curve: Curves.ease);
+  //   return;
+  // }
+  Scrollable.ensureVisible(targetContext, duration: const Duration(milliseconds: 500), alignment: -0.2);
 }

@@ -7,34 +7,30 @@ class Navrow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const TextStyle style = TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20);
-    // TextStyle selectedStyle =
-    //     TextStyle(color: Provider.of<MyTheme>(context).current.secondary, fontWeight: FontWeight.bold, fontSize: 20);
 
-    return Expanded(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextButton(
-            onPressed: () {
-              scrollTo("about_me");
-            },
-            child: const Text(
-              "O mnie",
-              style: style,
-            ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton(
+          onPressed: () {
+            scrollTo("about_me");
+          },
+          child: const Text(
+            "O mnie",
+            style: style,
           ),
-          const SizedBox(width: 10),
-          TextButton(
-            onPressed: () {
-              scrollTo("contact");
-            },
-            child: const Text(
-              "Kontakt",
-              style: style,
-            ),
+        ),
+        const SizedBox(width: 10),
+        TextButton(
+          onPressed: () {
+            scrollTo("contact");
+          },
+          child: const Text(
+            "Kontakt",
+            style: style,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

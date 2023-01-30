@@ -16,13 +16,14 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<MyTheme>(context).current;
-    TextStyle textStyle = TextStyle(color: Provider.of<MyTheme>(context).current.onPrimary2);
+    TextStyle textStyle = TextStyle(color: theme.onPrimary2);
 
-    final InputDecoration decoration = InputDecoration(
+    InputDecoration decoration = InputDecoration(
       fillColor: theme.background,
       filled: true,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
       helperText: "",
+      counterStyle: textStyle,
       errorStyle: const TextStyle(fontWeight: FontWeight.bold),
       errorBorder: const OutlineInputBorder(borderSide: BorderSide(width: 2, color: Colors.red)),
     );
@@ -33,22 +34,25 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
         children: [
           Container(
             margin: const EdgeInsets.all(30),
-            child: SelectableText(
+            child: const SelectableText(
               "Bądźmy w kontakcie",
-              style: TextStyle(color: theme.onPrimary, fontWeight: FontWeight.bold, fontSize: 48),
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 48),
               textAlign: TextAlign.center,
             ),
           ),
           Container(
-            color: theme.secondary2,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: theme.secondary2,
+            ),
             margin: const EdgeInsets.all(20),
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
-                SelectableText(
+                const SelectableText(
                   "Wolisz bezpośredni kontakt?",
                   style: TextStyle(
-                    color: theme.onPrimary2,
+                    color: Colors.white,
                     fontSize: 35,
                   ),
                   textAlign: TextAlign.center,
@@ -56,16 +60,16 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Icon(
                       Icons.phone,
                       size: 30,
-                      color: theme.onPrimary2,
+                      color: Colors.white,
                     ),
-                    const SizedBox(width: 20),
+                    SizedBox(width: 20),
                     SelectableText(
                       "508 394 295",
-                      style: TextStyle(color: theme.onPrimary2, fontSize: 20, fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -74,16 +78,16 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
                       Icon(
                         Icons.email,
                         size: 30,
-                        color: theme.onPrimary2,
+                        color: Colors.white,
                       ),
-                      const SizedBox(width: 20),
+                      SizedBox(width: 20),
                       SelectableText(
                         "patryk.sewastianowicz@gmail.com",
-                        style: TextStyle(color: theme.onPrimary2, fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -160,9 +164,11 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
             ),
           ),
           ElevatedButton.icon(
-            onPressed: () {
-              submit(context);
-            },
+            onPressed: isLoading
+                ? null
+                : () {
+                    submit(context);
+                  },
             style: ElevatedButton.styleFrom(
               backgroundColor: theme.secondary2,
               padding: const EdgeInsets.all(16),

@@ -18,7 +18,6 @@ class AboutMeContactScreen extends StatelessWidget {
 
     return Stack(
       children: [
-        Container(),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: max(screenPadding, 0)),
           child: Column(
