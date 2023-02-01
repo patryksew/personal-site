@@ -16,12 +16,7 @@ class HomeScreenImage extends StatelessWidget {
         shape: BoxShape.circle,
         color: Colors.grey,
       ),
-      child: const Center(
-        child: Text(
-          'Zdjęcie',
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
+      child: ClipOval(child: Image.asset('assets/portrait_1.jpg')),
     );
   }
 }

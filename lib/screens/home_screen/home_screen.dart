@@ -5,7 +5,8 @@ import 'package:cv/screens/home_screen/home_screen_desktop.dart';
 import 'package:cv/screens/home_screen/home_screen_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_builder/responsive_builder.dart';
+
+import '../../helpers/screen_type_layout.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -32,10 +33,9 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: ScreenTypeLayout(
-          mobile: const HomeScreenMobile(),
-          tablet: const HomeScreenDesktop(),
-          desktop: const HomeScreenDesktop(),
+        child: const ScreenTypeLayout(
+          mobile: HomeScreenMobile(),
+          desktop: HomeScreenDesktop(),
         ),
       ),
     );

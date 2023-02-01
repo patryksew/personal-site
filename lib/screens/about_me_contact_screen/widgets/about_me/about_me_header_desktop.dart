@@ -18,7 +18,7 @@ class AboutMeHeaderDesktop extends StatelessWidget {
             padding: const EdgeInsets.all(32.5),
             width: 480,
             height: 480,
-            child: Container(color: Colors.grey),
+            child: Image.asset('assets/portrait_2.jpg'),
           ),
           Expanded(
             child: Column(

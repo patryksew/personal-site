@@ -2,7 +2,7 @@ import 'package:cv/widgets/navbar/navbar_desktop.dart';
 import 'package:cv/widgets/navbar/navbar_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_builder/responsive_builder.dart';
+import '../../../../helpers/screen_type_layout.dart';
 
 import '../../providers/my_theme.dart';
 import '../../providers/scroll.dart';
@@ -24,10 +24,9 @@ class Navbar extends StatelessWidget {
           color: Provider.of<MyTheme>(context).current.primary,
           boxShadow: const [BoxShadow(offset: Offset(0, 6), color: Colors.black26)],
         ),
-        child: ScreenTypeLayout(
-          mobile: const NavbarMobile(),
-          tablet: const NavbarDesktop(),
-          desktop: const NavbarDesktop(),
+        child: const ScreenTypeLayout(
+          mobile: NavbarMobile(),
+          desktop: NavbarDesktop(),
         ),
       ),
     );

@@ -30,8 +30,8 @@ class AboutMeHeaderMobile extends StatelessWidget {
             width: mediaQuery.size.width - 65,
             height: mediaQuery.size.width - 65,
             color: myTheme.secondary2,
-            padding: const EdgeInsets.all(32.5),
-            child: Container(color: Colors.grey),
+            padding: const EdgeInsets.all(15),
+            child: Image.asset('assets/portrait_2.jpg'),
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 40, horizontal: 40),

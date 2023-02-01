@@ -1,7 +1,7 @@
 import 'package:cv/screens/about_me_contact_screen/widgets/about_me/about_me_item_desktop.dart';
 import 'package:cv/screens/about_me_contact_screen/widgets/about_me/about_me_item_mobile.dart';
 import 'package:flutter/material.dart';
-import 'package:responsive_builder/responsive_builder.dart';
+import '../../../../helpers/screen_type_layout.dart';
 
 class AboutMeItem extends StatelessWidget {
   final String text;
@@ -14,11 +14,6 @@ class AboutMeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
       mobile: AboutMeItemMobile(text: text, image: image),
-      tablet: AboutMeItemDesktop(
-        text: text,
-        imageRight: imageRight,
-        image: image,
-      ),
       desktop: AboutMeItemDesktop(
         text: text,
         imageRight: imageRight,
