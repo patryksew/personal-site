@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "564519777040",
-    "project_id": "resume-14121",
-    "storage_bucket": "resume-14121.appspot.com"
+    "project_number": "35110575993",
+    "project_id": "patryk-sewastianowicz",
+    "storage_bucket": "patryk-sewastianowicz.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:564519777040:android:831d7acc63d497aab82b95",
+        "mobilesdk_app_id": "1:35110575993:android:c7bcf8e97158c86cbed9a8",
         "android_client_info": {
           "package_name": "com.example.cv"
         }
       },
       "oauth_client": [
         {
-          "client_id": "564519777040-cae266eehv5lcd92vho7bnvfog6bpnh1.apps.googleusercontent.com",
+          "client_id": "35110575993-bogpfip0mqi0u1nikaa73nn27g400pvc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAtIbgJdrAJkEzQJXDXeycdFidj8gnY66U"
+          "current_key": "AIzaSyD6gpyCnNFxV53R8G2L3IrKyLj0JUkwQWc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "564519777040-cae266eehv5lcd92vho7bnvfog6bpnh1.apps.googleusercontent.com",
+              "client_id": "35110575993-bogpfip0mqi0u1nikaa73nn27g400pvc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
