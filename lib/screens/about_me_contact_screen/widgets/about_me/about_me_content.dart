@@ -1,3 +1,4 @@
+import 'package:cv/helpers/open_site.dart';
 import 'package:cv/providers/my_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +32,9 @@ class AboutMeContent extends StatelessWidget {
             image: "man_with_coffe_laptop",
           ),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              openSite(Site.cv);
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Provider.of<MyTheme>(context).current.primary2,
               padding: const EdgeInsets.all(16),
