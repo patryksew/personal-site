@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => MyTheme(),
       child: const MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Patryk Sewastianowicz',
         home: LandingScreen(),
       ),
     );

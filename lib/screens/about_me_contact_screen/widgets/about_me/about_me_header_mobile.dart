@@ -26,9 +26,6 @@ class AboutMeHeaderMobile extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 32.5),
-            width: mediaQuery.size.width - 65,
-            height: mediaQuery.size.width - 65,
             color: myTheme.secondary2,
             padding: const EdgeInsets.all(15),
             child: Image.asset('assets/portrait_2.jpg'),
