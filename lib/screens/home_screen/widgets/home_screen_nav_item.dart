@@ -1,7 +1,7 @@
-import 'package:cv/helpers/scroll_to.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../helpers/scroll_to.dart';
 import '../../../providers/my_theme.dart';
 
 class HomeScreenNavItem extends StatelessWidget {

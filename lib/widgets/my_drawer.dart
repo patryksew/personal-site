@@ -1,13 +1,13 @@
 import 'dart:ui';
 
-import 'package:cv/helpers/open_site.dart';
-import 'package:cv/screens/home_screen/widgets/home_screen_icon_button.dart';
-import 'package:cv/screens/home_screen/widgets/home_screen_nav_item.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../helpers/open_site.dart';
 import '../providers/my_theme.dart';
+import '../screens/home_screen/widgets/home_screen_icon_button.dart';
+import '../screens/home_screen/widgets/home_screen_nav_item.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});

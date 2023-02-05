@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:cv/widgets/navbar/navrow.dart';
-import 'package:cv/widgets/navbar/navrow_icons.dart';
 import 'package:flutter/material.dart';
 
+import 'navrow.dart';
+import 'navrow_icons.dart';
 import 'navrow_logo.dart';
 
 class NavbarDesktop extends StatelessWidget {

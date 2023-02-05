@@ -1,9 +1,10 @@
-import 'package:cv/providers/my_theme.dart';
-import 'package:cv/screens/about_me_contact_screen/widgets/contact_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+
+import '../../../providers/my_theme.dart';
+import 'contact_logic.dart';
 
 class ContactMobile extends StatefulWidget {
   const ContactMobile({super.key});

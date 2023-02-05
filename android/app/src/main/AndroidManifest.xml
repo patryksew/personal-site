@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cv">
+    package="com.patryk_sewastianowicz.personal_site">
    <application
-        android:label="cv"
+        android:label="Patryk Sewastianowicz"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

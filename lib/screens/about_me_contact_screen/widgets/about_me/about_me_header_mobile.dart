@@ -1,6 +1,7 @@
-import 'package:cv/providers/my_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../providers/my_theme.dart';
 
 class AboutMeHeaderMobile extends StatelessWidget {
   const AboutMeHeaderMobile({super.key});

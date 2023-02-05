@@ -1,6 +1,7 @@
-import 'package:cv/widgets/icon_open_drawer.dart';
-import 'package:cv/widgets/navbar/navrow_logo.dart';
 import 'package:flutter/material.dart';
+
+import '../icon_open_drawer.dart';
+import 'navrow_logo.dart';
 
 class NavbarMobile extends StatelessWidget {
   const NavbarMobile({super.key});

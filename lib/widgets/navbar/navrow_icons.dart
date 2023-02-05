@@ -1,10 +1,10 @@
-import 'package:cv/providers/my_theme.dart';
-import 'package:cv/screens/home_screen/widgets/home_screen_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../helpers/open_site.dart';
+import '../../providers/my_theme.dart';
+import '../../screens/home_screen/widgets/home_screen_icon_button.dart';
 
 class NavrowIcons extends StatelessWidget {
   const NavrowIcons({super.key});

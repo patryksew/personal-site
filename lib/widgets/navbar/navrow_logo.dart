@@ -1,5 +1,6 @@
-import 'package:cv/helpers/scroll_to.dart';
 import 'package:flutter/material.dart';
+
+import '../../helpers/scroll_to.dart';
 
 class NavrowLogo extends StatelessWidget {
   final TextAlign textAlign;

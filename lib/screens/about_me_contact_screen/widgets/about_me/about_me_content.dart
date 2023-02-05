@@ -1,8 +1,8 @@
-import 'package:cv/helpers/open_site.dart';
-import 'package:cv/providers/my_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../helpers/open_site.dart';
+import '../../../../providers/my_theme.dart';
 import 'about_me_item.dart';
 
 class AboutMeContent extends StatelessWidget {

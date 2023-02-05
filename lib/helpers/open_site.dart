@@ -12,8 +12,9 @@ void openSite(Site site) async {
       url = Uri.parse("https://www.linkedin.com/in/patryk-sewastianowicz-25352b185/");
       break;
     case Site.cv:
-      final ref = await FirebaseStorage.instance.ref().child("CV Patryk Sewastianowicz.pdf").getDownloadURL();
-      url = Uri.parse(ref);
+      final ref = FirebaseStorage.instance.ref("CV Patryk Sewastianowicz.pdf");
+
+      url = Uri.parse(await ref.getDownloadURL());
       break;
   }
 

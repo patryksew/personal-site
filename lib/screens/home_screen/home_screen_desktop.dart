@@ -1,8 +1,8 @@
-import 'package:cv/helpers/open_site.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../helpers/open_site.dart';
 import '../../providers/my_theme.dart';
 import 'widgets/home_screen_icon_button.dart';
 import 'widgets/home_screen_image.dart';

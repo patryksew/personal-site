@@ -1,9 +1,9 @@
-import 'package:cv/screens/home_screen/widgets/home_screen_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/my_theme.dart';
 import '../../widgets/icon_open_drawer.dart';
+import 'widgets/home_screen_image.dart';
 
 class HomeScreenMobile extends StatelessWidget {
   const HomeScreenMobile({super.key});

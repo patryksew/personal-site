@@ -1,11 +1,11 @@
-import 'package:cv/widgets/navbar/navbar_desktop.dart';
-import 'package:cv/widgets/navbar/navbar_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../helpers/screen_type_layout.dart';
 
 import '../../providers/my_theme.dart';
 import '../../providers/scroll.dart';
+import 'navbar_desktop.dart';
+import 'navbar_mobile.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});

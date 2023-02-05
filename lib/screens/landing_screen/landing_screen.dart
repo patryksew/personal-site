@@ -1,12 +1,12 @@
 import 'dart:math';
 
-import 'package:cv/screens/about_me_contact_screen/about_me_contact_screen.dart';
-import 'package:cv/screens/home_screen/home_screen.dart';
-import 'package:cv/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/scroll.dart';
+import '../../widgets/my_drawer.dart';
+import '../about_me_contact_screen/about_me_contact_screen.dart';
+import '../home_screen/home_screen.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});

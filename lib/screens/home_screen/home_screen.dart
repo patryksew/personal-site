@@ -1,12 +1,12 @@
 import 'dart:math';
 
-import 'package:cv/providers/my_theme.dart';
-import 'package:cv/screens/home_screen/home_screen_desktop.dart';
-import 'package:cv/screens/home_screen/home_screen_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../helpers/screen_type_layout.dart';
+import '../../providers/my_theme.dart';
+import 'home_screen_desktop.dart';
+import 'home_screen_mobile.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
