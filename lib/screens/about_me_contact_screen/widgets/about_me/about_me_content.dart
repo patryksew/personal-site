@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patryk_sewastianowicz/helpers/download_cv.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../helpers/open_site.dart';
@@ -33,7 +34,7 @@ class AboutMeContent extends StatelessWidget {
           ),
           ElevatedButton.icon(
             onPressed: () {
-              openSite(Site.cv);
+              downloadCv(Localizations.localeOf(context).languageCode);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Provider.of<MyTheme>(context).current.primary2,
