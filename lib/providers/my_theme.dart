@@ -27,19 +27,21 @@ class MyTheme extends ChangeNotifier {
     homeGradient2: const Color.fromRGBO(0, 143, 188, 1),
   );
 
-  late MyThemeData current;
+  late MyThemeData _current;
+
+  MyThemeData get current => _current;
 
   MyTheme() {
-    current = lightTheme;
+    _current = lightTheme;
   }
 
   void toogleDarkMode() {
     if (isDarkMode) {
       isDarkMode = false;
-      current = lightTheme;
+      _current = lightTheme;
     } else {
       isDarkMode = true;
-      current = darkTheme;
+      _current = darkTheme;
     }
 
     notifyListeners();
