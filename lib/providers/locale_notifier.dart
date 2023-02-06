@@ -7,6 +7,7 @@ class LocaleNotifier extends ChangeNotifier {
 
   void setLocale(String langCode) {
     _current = Locale(langCode);
+
     notifyListeners();
   }
 }

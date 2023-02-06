@@ -8,6 +8,7 @@ import '../helpers/open_site.dart';
 import '../providers/my_theme.dart';
 import '../screens/home_screen/widgets/home_screen_icon_button.dart';
 import '../screens/home_screen/widgets/home_screen_nav_item.dart';
+import 'navbar/language_dialog.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -57,14 +58,14 @@ class MyDrawer extends StatelessWidget {
                     text: "Tryb ciemny",
                     onPressed: Provider.of<MyTheme>(context, listen: false).toogleDarkMode,
                   ),
-                  // HomeScreenIconButton(
-                  //   Icons.language,
-                  //   text: "Język",
-                  //   onPressed: () => showDialog(
-                  //     context: context,
-                  //     builder: (_) => const LanguageDialog(),
-                  //   ),
-                  // ),
+                  HomeScreenIconButton(
+                    Icons.language,
+                    text: "Język",
+                    onPressed: () => showDialog(
+                      context: context,
+                      builder: (_) => const LanguageDialog(),
+                    ),
+                  ),
                 ],
               ),
             ),

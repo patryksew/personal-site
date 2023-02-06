@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patryk_sewastianowicz/providers/locale_notifier.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/my_theme.dart';
@@ -8,6 +9,8 @@ class LanguageDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LocaleNotifier localeProvider = Provider.of<LocaleNotifier>(context, listen: false);
+
     return SimpleDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       backgroundColor: Provider.of<MyTheme>(context).current.background,
@@ -21,12 +24,14 @@ class LanguageDialog extends StatelessWidget {
         _Option(
           text: "🇵🇱  Polski",
           onPressed: () {
+            localeProvider.setLocale("pl");
             Navigator.of(context).pop();
           },
         ),
         _Option(
           text: "🇬🇧  Angielski",
           onPressed: () {
+            localeProvider.setLocale("en");
             Navigator.of(context).pop();
           },
         )

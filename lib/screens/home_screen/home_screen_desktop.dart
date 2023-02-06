@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../helpers/open_site.dart';
 import '../../providers/my_theme.dart';
+import '../../widgets/navbar/language_dialog.dart';
 import 'widgets/home_screen_icon_button.dart';
 import 'widgets/home_screen_image.dart';
 import 'widgets/home_screen_nav_item.dart';
@@ -69,13 +70,13 @@ class HomeScreenDesktop extends StatelessWidget {
                     Provider.of<MyTheme>(context).isDarkMode ? Icons.dark_mode : Icons.dark_mode_outlined,
                     onPressed: Provider.of<MyTheme>(context, listen: false).toogleDarkMode,
                   ),
-                  // HomeScreenIconButton(
-                  //   Icons.language,
-                  //   onPressed: () => showDialog(
-                  //     context: context,
-                  //     builder: (_) => const LanguageDialog(),
-                  //   ),
-                  // ),
+                  HomeScreenIconButton(
+                    Icons.language,
+                    onPressed: () => showDialog(
+                      context: context,
+                      builder: (_) => const LanguageDialog(),
+                    ),
+                  ),
                 ],
               ),
             ],
