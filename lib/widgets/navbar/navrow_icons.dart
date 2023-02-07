@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../helpers/open_site.dart';
 import '../../providers/my_theme.dart';
 import '../../screens/home_screen/widgets/home_screen_icon_button.dart';
+import 'language_dialog.dart';
 
 class NavrowIcons extends StatelessWidget {
   const NavrowIcons({super.key});
@@ -29,14 +30,14 @@ class NavrowIcons extends StatelessWidget {
           forceWhite: true,
           onPressed: Provider.of<MyTheme>(context, listen: false).toogleDarkMode,
         ),
-        // HomeScreenIconButton(
-        //   Icons.language,
-        //   forceWhite: true,
-        //   onPressed: () => showDialog(
-        //     context: context,
-        //     builder: (_) => const LanguageDialog(),
-        //   ),
-        // ),
+        HomeScreenIconButton(
+          Icons.language,
+          forceWhite: true,
+          onPressed: () => showDialog(
+            context: context,
+            builder: (_) => const LanguageDialog(),
+          ),
+        ),
       ],
     );
   }

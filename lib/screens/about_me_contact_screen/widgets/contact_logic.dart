@@ -2,12 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../widgets/dialogs/message_sent_dialog.dart';
 import '../../../widgets/dialogs/my_alert_dialog.dart';
 
 mixin ContactLogic<T extends StatefulWidget> on State<T> {
   static final formKey = GlobalKey<FormState>();
+  late AppLocalizations t;
   String name = '';
   String email = '';
   String? phone = '';
@@ -16,18 +18,23 @@ mixin ContactLogic<T extends StatefulWidget> on State<T> {
 
   bool isLoading = false;
 
-  final List<DropdownMenuItem> dropdownItems = [
-    const DropdownMenuItem(
-      value: ContactType.email,
-      child: Text("Email"),
-    ),
-    const DropdownMenuItem(
-      value: ContactType.phone,
-      child: Text("Telefon"),
-    ),
-  ];
+  late List<DropdownMenuItem> dropdownItems;
 
-  void submit(BuildContext context) async {
+  void passContext(BuildContext context) {
+    t = AppLocalizations.of(context)!;
+    dropdownItems = [
+      const DropdownMenuItem(
+        value: ContactType.email,
+        child: Text("Email"),
+      ),
+      DropdownMenuItem(
+        value: ContactType.phone,
+        child: Text(t.phone),
+      ),
+    ];
+  }
+
+  void submit() async {
     setState(() {
       isLoading = true;
     });
@@ -41,9 +48,9 @@ mixin ContactLogic<T extends StatefulWidget> on State<T> {
     if (!isConnected) {
       showDialog(
           context: context,
-          builder: (context) => const MyAlertDialog(
-                title: "Urządzenie nie ma połączenia z internetem",
-                content: "Wiadomośc zostanie wysłana, gdy urządzenie połączy się z internetem",
+          builder: (context) => MyAlertDialog(
+                title: t.noInternetTitle,
+                content: t.noInternetContent,
               ));
     }
 
@@ -54,9 +61,7 @@ mixin ContactLogic<T extends StatefulWidget> on State<T> {
       } catch (error) {
         showDialog(
             context: context,
-            builder: ((context) => const MyAlertDialog(
-                title: "Coś poszło nie tak",
-                content: "Spróbuj ponownie później lub napisz na patryk.sewastianowicz@gmail.com")));
+            builder: ((context) => MyAlertDialog(title: t.smthWentWrongTitle, content: t.smthWentWrongContent)));
         return;
       }
     }
@@ -80,20 +85,20 @@ mixin ContactLogic<T extends StatefulWidget> on State<T> {
   }
 
   String? notEmptyValidator(String? value) {
-    if (value == null || value.isEmpty) return "To pole nie może być puste";
+    if (value == null || value.isEmpty) return t.fieldCantBeEmpty;
     return null;
   }
 
   String? phoneValidator(String? value) {
     if (contactType == ContactType.email && (value == null || value.isEmpty)) return null;
-    if (value == null || value.isEmpty) return "To pole nie może być puste";
-    if (value.length < 9) return "Nr telefonu jest zbyt krótki";
+    if (value == null || value.isEmpty) return t.fieldCantBeEmpty;
+    if (value.length < 9) return t.phoneNumberTooShort;
     return null;
   }
 
   String? emailValidator(String? value) {
-    if (value == null || value.isEmpty) return "To pole nie może być puste";
-    if (!value.contains("@") || !value.contains(".")) return "Wprowadź poprawny adres email";
+    if (value == null || value.isEmpty) return t.fieldCantBeEmpty;
+    if (!value.contains("@") || !value.contains(".")) return t.enterCorrectEmail;
     return null;
   }
 }

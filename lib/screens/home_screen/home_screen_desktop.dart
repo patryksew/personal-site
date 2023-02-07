@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../helpers/open_site.dart';
 import '../../providers/my_theme.dart';
@@ -14,6 +15,8 @@ class HomeScreenDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+
     return Padding(
       padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       child: Row(
@@ -34,7 +37,7 @@ class HomeScreenDesktop extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: SelectableText(
-                  'Cześć, jestem Patryk',
+                  t.homeScreenWelcome,
                   style: TextStyle(
                       color: Provider.of<MyTheme>(context).current.onPrimary2,
                       fontWeight: FontWeight.bold,
@@ -50,9 +53,9 @@ class HomeScreenDesktop extends StatelessWidget {
               ),
               const SizedBox(height: 50),
               Row(
-                children: const [
-                  HomeScreenNavItem('O mnie', targetId: "about_me"),
-                  HomeScreenNavItem('Kontakt', targetId: "contact"),
+                children: [
+                  HomeScreenNavItem(t.aboutMe, targetId: "about_me"),
+                  HomeScreenNavItem(t.contact, targetId: "contact"),
                 ],
               ),
               const SizedBox(height: 60),

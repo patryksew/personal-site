@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../providers/my_theme.dart';
 import '../../widgets/icon_open_drawer.dart';
@@ -10,6 +11,8 @@ class HomeScreenMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+
     MyThemeData myTheme = Provider.of<MyTheme>(context).current;
 
     return SafeArea(
@@ -27,7 +30,7 @@ class HomeScreenMobile extends StatelessWidget {
             const HomeScreenImage(200),
             const SizedBox(height: 70),
             SelectableText(
-              "Cześć, jestem Patryk",
+              t.homeScreenWelcome,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: myTheme.onPrimary2,

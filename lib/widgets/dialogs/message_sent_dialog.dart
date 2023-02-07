@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../providers/my_theme.dart';
 
@@ -14,14 +15,16 @@ class MessageSentDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+
     return AlertDialog(
       backgroundColor: Provider.of<MyTheme>(context).current.background,
       title: SelectableText(
-        "Wiadomość wysłana",
+        t.messageSent,
         style: TextStyle(color: Provider.of<MyTheme>(context).current.onPrimary2),
       ),
       content: SelectableText(
-        "Treść wiadomości:\n$_message",
+        "${t.messageContent}:\n$_message",
         style: TextStyle(color: Provider.of<MyTheme>(context).current.onPrimary2),
       ),
       actions: [

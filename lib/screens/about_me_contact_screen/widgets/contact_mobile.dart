@@ -16,6 +16,8 @@ class ContactMobile extends StatefulWidget {
 class _ContactMobileState extends State<ContactMobile> with ContactLogic {
   @override
   Widget build(BuildContext context) {
+    super.passContext(context);
+
     final theme = Provider.of<MyTheme>(context).current;
     TextStyle textStyle = TextStyle(color: theme.onPrimary2);
 
@@ -35,9 +37,9 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
         children: [
           Container(
             margin: const EdgeInsets.all(30),
-            child: const SelectableText(
-              "Bądźmy w kontakcie",
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 48),
+            child: SelectableText(
+              t.letsStayInTouch,
+              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 48),
               textAlign: TextAlign.center,
             ),
           ),
@@ -50,9 +52,9 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
-                const SelectableText(
-                  "Wolisz bezpośredni kontakt?",
-                  style: TextStyle(
+                SelectableText(
+                  t.doYouPreferDirectContact,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 35,
                   ),
@@ -97,7 +99,7 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
             ),
           ),
           _Wrapper(
-            label: "Imię *",
+            label: "${t.name} *",
             child: TextFormField(
               style: textStyle,
               validator: notEmptyValidator,
@@ -119,7 +121,7 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
           ),
           _Wrapper(
             // ignore: prefer_interpolation_to_compose_strings
-            label: ("Numer telefonu" + (contactType == ContactType.phone ? " *" : "")),
+            label: (t.phoneNumber + (contactType == ContactType.phone ? " *" : "")),
             child: TextFormField(
               style: textStyle,
               validator: phoneValidator,
@@ -131,7 +133,7 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
             ),
           ),
           _Wrapper(
-            label: "Preferowany typ kontaktu",
+            label: t.preferredContactType,
             child: DropdownButtonFormField(
               style: textStyle,
               dropdownColor: theme.background,
@@ -148,7 +150,7 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
             ),
           ),
           _Wrapper(
-            label: "Wiadomość *",
+            label: "${t.message} *",
             child: SizedBox(
               height: 126,
               child: TextFormField(
@@ -168,7 +170,7 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
             onPressed: isLoading
                 ? null
                 : () {
-                    submit(context);
+                    submit();
                   },
             style: ElevatedButton.styleFrom(
               backgroundColor: theme.secondary2,
@@ -176,9 +178,9 @@ class _ContactMobileState extends State<ContactMobile> with ContactLogic {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             ),
             icon: const Icon(Icons.send, size: 40),
-            label: const Text(
-              "Wyślij",
-              style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            label: Text(
+              t.send,
+              style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
             ),
           ),
           const SizedBox(height: 20),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../providers/my_theme.dart';
 
@@ -8,6 +9,8 @@ class AboutMeHeaderDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+
     MyThemeData myTheme = Provider.of<MyTheme>(context).current;
 
     return Container(
@@ -25,7 +28,7 @@ class AboutMeHeaderDesktop extends StatelessWidget {
             child: Column(
               children: [
                 SelectableText(
-                  "O mnie",
+                  t.aboutMe,
                   style: TextStyle(
                     color: myTheme.onPrimary,
                     fontWeight: FontWeight.bold,
@@ -34,9 +37,9 @@ class AboutMeHeaderDesktop extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 40),
-                  child: const SelectableText(
-                    "Nazywam się Patryk Sewastianowicz, jestem programistą front-end i mobile z rocznym doświadczeniem w branży. Posiadam umiejętności w takich technologiach jak HTML Flutter, JavaScript, Angular oraz Vue.",
-                    style: TextStyle(
+                  child: SelectableText(
+                    t.aboutMeHeader,
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                       fontSize: 32,

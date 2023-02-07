@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../helpers/scroll_to.dart';
 
@@ -7,6 +8,8 @@ class Navrow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+
     const TextStyle style = TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20);
 
     return Row(
@@ -16,8 +19,8 @@ class Navrow extends StatelessWidget {
           onPressed: () {
             scrollTo("about_me");
           },
-          child: const Text(
-            "O mnie",
+          child: Text(
+            t.aboutMe,
             style: style,
           ),
         ),
@@ -26,8 +29,8 @@ class Navrow extends StatelessWidget {
           onPressed: () {
             scrollTo("contact");
           },
-          child: const Text(
-            "Kontakt",
+          child: Text(
+            t.contact,
             style: style,
           ),
         ),

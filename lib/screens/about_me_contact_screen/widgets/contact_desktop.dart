@@ -16,6 +16,8 @@ class ContactDesktop extends StatefulWidget {
 class _ContactDesktopState extends State<ContactDesktop> with ContactLogic {
   @override
   Widget build(BuildContext context) {
+    super.passContext(context);
+
     final theme = Provider.of<MyTheme>(context).current;
     TextStyle textStyle = TextStyle(color: Provider.of<MyTheme>(context).current.onPrimary2);
 
@@ -40,14 +42,14 @@ class _ContactDesktopState extends State<ContactDesktop> with ContactLogic {
                 Container(
                   margin: const EdgeInsets.all(30),
                   child: SelectableText(
-                    "Bądźmy w kontakcie",
+                    t.letsStayInTouch,
                     style: TextStyle(color: theme.onPrimary, fontWeight: FontWeight.bold, fontSize: 48),
                   ),
                 ),
                 Row(
                   children: [
                     _Wrapper(
-                      label: "Imię *",
+                      label: "${t.name} *",
                       child: TextFormField(
                         style: textStyle,
                         validator: notEmptyValidator,
@@ -74,7 +76,7 @@ class _ContactDesktopState extends State<ContactDesktop> with ContactLogic {
                   children: [
                     _Wrapper(
                       // ignore: prefer_interpolation_to_compose_strings
-                      label: ("Numer telefonu" + (contactType == ContactType.phone ? " *" : "")),
+                      label: (t.phoneNumber + (contactType == ContactType.phone ? " *" : "")),
                       child: TextFormField(
                         style: textStyle,
                         validator: phoneValidator,
@@ -86,7 +88,7 @@ class _ContactDesktopState extends State<ContactDesktop> with ContactLogic {
                       ),
                     ),
                     _Wrapper(
-                      label: "Preferowany typ kontaktu",
+                      label: t.preferredContactType,
                       child: SizedBox(
                         height: 84,
                         child: DropdownButtonFormField(
@@ -111,7 +113,7 @@ class _ContactDesktopState extends State<ContactDesktop> with ContactLogic {
                 Row(
                   children: [
                     _Wrapper(
-                      label: "Wiadomość *",
+                      label: "${t.message} *",
                       child: SizedBox(
                         height: 126,
                         child: TextFormField(
@@ -133,7 +135,7 @@ class _ContactDesktopState extends State<ContactDesktop> with ContactLogic {
                   onPressed: isLoading
                       ? null
                       : () {
-                          submit(context);
+                          submit();
                         },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: theme.secondary2,
@@ -141,9 +143,9 @@ class _ContactDesktopState extends State<ContactDesktop> with ContactLogic {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                   ),
                   icon: const Icon(Icons.send, size: 40),
-                  label: const Text(
-                    "Wyślij",
-                    style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+                  label: Text(
+                    t.send,
+                    style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(height: 50)
@@ -160,7 +162,7 @@ class _ContactDesktopState extends State<ContactDesktop> with ContactLogic {
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 30),
                 child: Text(
-                  "Wolisz bezpośredni kontakt?",
+                  t.doYouPreferDirectContact,
                   style: TextStyle(
                     color: theme.onPrimary2,
                     fontSize: 35,
