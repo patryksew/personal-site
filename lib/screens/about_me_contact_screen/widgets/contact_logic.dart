@@ -35,13 +35,14 @@ mixin ContactLogic<T extends StatefulWidget> on State<T> {
   }
 
   void submit() async {
-    setState(() {
-      isLoading = true;
-    });
     if (formKey.currentState == null) return;
     FormState formState = formKey.currentState!;
     if (!formState.validate()) return;
     formState.save();
+
+    setState(() {
+      isLoading = true;
+    });
 
     bool isConnected = !(await Connectivity().checkConnectivity() == ConnectivityResult.none);
 
@@ -62,6 +63,9 @@ mixin ContactLogic<T extends StatefulWidget> on State<T> {
         showDialog(
             context: context,
             builder: ((context) => MyAlertDialog(title: t.smthWentWrongTitle, content: t.smthWentWrongContent)));
+        setState(() {
+          isLoading = false;
+        });
         return;
       }
     }
