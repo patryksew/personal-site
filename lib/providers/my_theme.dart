@@ -6,7 +6,7 @@ class MyTheme extends ChangeNotifier {
   final MyThemeData lightTheme = MyThemeData(
     primary: const Color.fromRGBO(35, 165, 206, 1),
     primary2: const Color.fromRGBO(7, 148, 192, 1),
-    secondary: Color.fromARGB(255, 212, 11, 132),
+    secondary: const Color.fromARGB(255, 212, 11, 132),
     secondary2: const Color.fromRGBO(237, 93, 179, 1),
     background: const Color.fromRGBO(255, 255, 255, 1),
     onBackground: const Color.fromRGBO(9, 107, 150, 1),

@@ -27,7 +27,7 @@ class AboutMeContent extends StatelessWidget {
             image: "smartphone",
           ),
           AboutMeItem(
-            text: t.aboutMeContent2,
+            text: t.aboutMeContent3,
             image: "man_with_coffe_laptop",
           ),
           ElevatedButton.icon(

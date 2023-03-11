@@ -46,7 +46,7 @@ mixin ContactLogic<T extends StatefulWidget> on State<T> {
 
     bool isConnected = !(await Connectivity().checkConnectivity() == ConnectivityResult.none);
 
-    if (!isConnected) {
+    if (!isConnected && mounted) {
       showDialog(
           context: context,
           builder: (context) => MyAlertDialog(
@@ -60,6 +60,7 @@ mixin ContactLogic<T extends StatefulWidget> on State<T> {
         await FirebaseAuth.instance.signInAnonymously();
         await FirebaseFirestore.instance.collection("mail").doc(FirebaseAuth.instance.currentUser!.uid).set({});
       } catch (error) {
+        if (!mounted) return;
         showDialog(
             context: context,
             builder: ((context) => MyAlertDialog(title: t.smthWentWrongTitle, content: t.smthWentWrongContent)));
@@ -72,6 +73,8 @@ mixin ContactLogic<T extends StatefulWidget> on State<T> {
     await FirebaseFirestore.instance
         .collection("mail/${FirebaseAuth.instance.currentUser!.uid}/messages")
         .add({"name": name, "email": email, "phone": phone, "contact_type": contactType.name, "message": message});
+
+    if (!mounted) return;
 
     await showDialog(context: context, builder: (context) => MessageSentDialog(message: message));
 
